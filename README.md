@@ -3,11 +3,11 @@
 # loft.sc
 #### By Cfer89
 
-A tool to select and make parametric surfaces based on Bezier quadratic interpolation. 
-The wand is the `phantom_membrane` (equivalent of wooden axe in worldedit). 
-You can select points holding the wand and right or left clicking on block. 
--Right click and left click have different effects: 
--Left click is used to start a new spline
+A tool to select and make parametric surfaces based on Bezier quadratic interpolation.\n
+The wand is the `phantom_membrane` (equivalent of wooden axe in worldedit).\n
+You can select points holding the wand and right or left clicking on block.\n
+-Right click and left click have different effects:\n
+-Left click is used to start a new spline\n
 Right click is only used for extending the selection of a spline
 Splines are defined by one or more control points selected by the user (if a spline is defined by a single point, even if it is technicaly considered by the script as a spline, it is not really a spline but just a dot). In a similar way (extending the concept of spline) you can consider a surface as a spline where the control points are all the splines the user has created. This creates a tridimensional parametric surface that will be eventually rendered by the script during the selection of points.
 Selecting the points in a different order makes a huge difference and can be a bit confusing at first, but this gives you more possibilities for customizing the surface shapes.
