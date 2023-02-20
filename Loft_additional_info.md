@@ -40,16 +40,19 @@ The following step is to calculate all the other secondary control points `Aij`,
 
 `Ai0 = Pi1 + 0.25 * ( Pi0 - Pi2 )`   with `0<=i<=n-1`
 
-`Aij = 2 * Pij - Ai(j-1)`   with `0<=i<=n-1` and `0<=j<=m`
+`Aij = 2 * Pij - Ai(j-1)`   with `0<=i<=n-1` and `0<j<=m`
 
 `B0j = P1j + 0.25 * (P0j - P2j )`   with `0<=j<=m-1`
 
-`Bij = 2 * Pij - B(i-1)j`   with `0<=i<=n` and `0<=j<=m-1`
+`Bij = 2 * Pij - B(i-1)j`   with `0<i<=n` and `0<=j<=m-1`
 
 `C0j = A1j + 0.25 * A2j`   with `0<=j<=m-1`
 
-`Cij = Aij - C(i-1)j`   with `0<=i<=n-1` and `0<=j<=m-1`
+`Cij = Aij - C(i-1)j`   with `0<i<=n-1` and `0<=j<=m-1`
 
+All of those secondary control points are then stored in the variables `global_loft:'a'`, `global_loft:'b'` and `global_loft:'c'`. `global_loft:'a'` is a `(n-1) * m` matrix of points, `global_loft:'b'` is a `n * (m-1)` matrix of points and `global_loft:'c'` is a `(n-1) * (m-1)` matrix of points.
+
+A convenient thing is that `Aij` and `Bij` can be used olso for rendering splines that are usefull to visualize the loft surface in the 3D space of minecraft.
 
 
 
