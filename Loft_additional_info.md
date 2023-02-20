@@ -1,6 +1,6 @@
-This file contains additional info about all the math behind the loft script.
+# This file contains additional info about all the math behind the loft script.
 
-
+## Some math definitions:
 
 Since the script is based on parametric curves and parametric surfaces, let's first define what are those:
 a parametric curve is a function that returns a point in 3D space given 1 variable u.
