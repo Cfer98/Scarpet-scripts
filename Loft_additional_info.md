@@ -34,19 +34,21 @@ A generic loft surface is composed by a grid of `n * m` main control points. If 
 
 This problem is solved by remapping the spline's control points. `Ai` coefficients of the given spline are calculated first. Then all the new control points can be calculated by 'dividing' the spline in `n` 'equal' segments so that `Pi` new control points can be calculated by evaluating the spline in those `n` points. Let's say the spline has `k` control points and `k<n`. The generic new control point `Pi` (`0<=i<=n`) belongs to the spline `j = floor( (k-1)/(n-1)*i)` and it's value can be calculated by evaluating that spline in `u = ( (k-1)/(n-1)*i)%1`. The `Pn` point can't be calculated in this way but it's value is exactly equal to `Pk` last control point of the starting spline. The new calculated spline may not have the same shape if `n/k` is a non integer value but they will look really similar anyway. The new control points of the surface are then stored in the variable `global_loft:'cset'` and that variable is made of a string of `m` splines that are made of exactly `n` control points. So, `global_loft:'cset'` is the complete `m * n` set of control points of the loft surface.
 
+............................................................................
+
 The following step is to calculate all the other secondary control points `Aij`, `Bij`, `Cij`. Those are calculated in a similar way as `Ai` control points of a normal spline. The equation are given by matching the first partial derivative of each adjacent Bezier surface plus other `n+m` equation given by matching the second derivative of the first two Bezier surfaces of each 'n-column' and 'm-row'. Long story short:
 
-`Ai0 = Pi1 + 0.25 * ( Pi0 - Pi2 )`
+`Ai0 = Pi1 + 0.25 * ( Pi0 - Pi2 )`   with `0<=i<=n-1`
 
-`Aij = 2 * Pij - Ai(j-1)`
+`Aij = 2 * Pij - Ai(j-1)`   with `0<=i<=n-1` and `0<=j<=m`
 
-`B0j = P1j + 0.25 * (P0j - P2j )`
+`B0j = P1j + 0.25 * (P0j - P2j )`   with `0<=j<=m-1`
 
-`Bij = 2 * Pij - B(i-1)j`
+`Bij = 2 * Pij - B(i-1)j`   with `0<=i<=n` and `0<=j<=m-1`
 
-`C0j = A1j + 0.25 * A2j`
+`C0j = A1j + 0.25 * A2j`   with `0<=j<=m-1`
 
-`Cij = Aij - C(i-1)j`
+`Cij = Aij - C(i-1)j`   with `0<=i<=n-1` and `0<=j<=m-1`
 
 
 
